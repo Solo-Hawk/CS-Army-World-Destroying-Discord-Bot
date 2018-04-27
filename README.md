@@ -5,7 +5,7 @@ CS Army Super Discord Bot - https://discord.gg/xmFX2E
 
 **Stage One - Basics**
  - [ ] Readme Completion
- - [ ] Discord-Py Template
+ - [x] Discord-Py Template
 
 **Stage Two - Core**
  - [ ] Welcome page - Roles set by reactions

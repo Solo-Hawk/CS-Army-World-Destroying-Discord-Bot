@@ -1,0 +1,17 @@
+{
+  "plugin": "TestPlugin",
+  "plugin_ver": "0.1a",
+  "plugin_object": "__main__.py",
+  "accepts": [
+    [
+      "command": "!ping",
+      "callback": "test_func@TestPlugin",
+      "on_event": "on_message"
+    ],
+    [
+      "command": "!echo",
+      "callback": "echo_func@TestPlugin",
+      "on_event": "on_message"
+    ]
+  ]
+}

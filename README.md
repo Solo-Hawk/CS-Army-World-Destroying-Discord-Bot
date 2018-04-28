@@ -3,9 +3,9 @@ CS Army Super Discord Bot - https://discord.gg/xmFX2E
 
 ## Installing
 
-This bot uses Python 3.5! make sure you have that installed.
+This bot uses Python 3.6.5! Make sure you have that installed.
 
-Also ensure you have discord installed via pip. this can be done by typing:
+Also ensure you have discord installed via pip. This can be done by typing:
 
 ```
 $ pip3 install discord

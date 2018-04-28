@@ -87,5 +87,5 @@ async def on_message(message):
     if callback != "5112":
         to_call = discord_bot.parse_callback(callback)
         if to_call != "5512":
-            await to_call(message.channel, discord_client)
+            await to_call(message, discord_client)
 

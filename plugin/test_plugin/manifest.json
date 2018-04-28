@@ -5,7 +5,7 @@
   "accepts": [
     {
       "command": "!ping",
-      "callback": "test_func@TestPlugin",
+      "callback": "ping_func@TestPlugin",
       "on_event": "on_message"
     },
     {

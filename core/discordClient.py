@@ -45,12 +45,12 @@ class DiscordBot():
 discord_bot = DiscordBot()
 
 @discord_client.event
-async def on_ready(self):
+async def on_ready():
     logger.debug(discord_client.user.name)
     logger.debug(discord_client.user.id)
     logger.debug('------')
     for i in discord_bot._parse_plugin_manifests():
-        await discord.client.send_message(discord.Object(id='439598709299347456'), f"{i} ... OK")
+        await discord_client.send_message(discord.Object(id='439598709299347456'), f"{i} ... OK")
 
 
 @discord_client.event

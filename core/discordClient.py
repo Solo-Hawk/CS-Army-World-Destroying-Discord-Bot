@@ -56,9 +56,7 @@ class DiscordBot():
         for command in temp:
             if command['command'] == prefix:
                 return command['callback']
-            else:
-                pass
-        return "ERROR 5112"
+        return "5112"
 
     def parse_callback(self, callback: str) -> object:
         temp = callback.split('@')

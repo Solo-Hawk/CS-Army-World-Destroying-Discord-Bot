@@ -70,7 +70,11 @@ class DiscordBot():
         print(self.plugin_exports)
         for i in self.plugin_exports:
             if i['plugin'] == temp[-1]:
-                return getattr(i['class'], temp[0])
+                for j in self.plugins:
+                    if j['plugin'] == temp[-1]:
+                        permission = j['plugin_permissions']
+                        break
+                return {"permission": permission, "callback": getattr(i['class'], temp[0])}
         return "5512"
 
 
@@ -94,8 +98,11 @@ async def on_message(message):
     if callback != "5112":
         to_call = discord_bot.parse_callback(callback)
         if to_call != "5512":
-            await to_call(message.channel, discord_client)
-
+            if to_call['permission'] == "LEVEL1":
+                await to_call["callback"](discord_bot, message, discord_client)
+            else:
+                await to_call["callback"](message, discord_client)
+                
 @discord_client.event
 async def on_reaction_add(reaction, user):
     __type__ = "on_reaction_add"
@@ -104,5 +111,8 @@ async def on_reaction_add(reaction, user):
         to_call = parse_callback(self.callback["on_reaction_add"])
         if to_call != 5512:
             await to_call(reaction, user)
-
-
+           
+async def skynet():
+    while True:
+        inpu = input()
+        await discord_client.send_message(discord.Object(id="439534561836269577"), inpu)

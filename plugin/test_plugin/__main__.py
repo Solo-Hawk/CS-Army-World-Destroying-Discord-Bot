@@ -1,9 +1,14 @@
 import os, sys
 import typing
+import discord
 
 class TestPlugin:
-    def ping_func(discord_client: object) -> str:
-        return "[TestPlugin] started __init__"
+    async def ping_func(message, discord_client: object) -> str:
+        await discord_client.send_message(message.channel, "WE WUZ KINGS N SHIET")
 
-    async def echo_func( message_channel, discord_client: object) -> str:
-        await discord_client.send_message(message_channel, "echo func works fine")
+    async def echo_func( message, discord_client: object) -> str:
+        await discord_client.send_message(message.channel, message.content.split("!echo ")[-1])
+
+    async def echoto_func(message, discord_client: object) -> str:
+        temp = message.content.split()
+        await discord_client.send_message(discord.Object(id=temp[1]), temp[2])

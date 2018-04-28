@@ -1,0 +1,14 @@
+{
+  "plugin": "AdminPlugin",
+  "plugin_ver": "0.2",
+  "plugin_object": "__main__.py",
+  "plugin_description": "Manage your bot efficiently",
+  "accepts": [
+    {
+      "command": "!plugins",
+      "callback": "plugins@AdminPlugin",
+      "on_event": "on_message"
+    }
+  ],
+  "plugin_permissions": "LEVEL1"
+}

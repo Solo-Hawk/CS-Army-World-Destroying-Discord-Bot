@@ -1,0 +1,13 @@
+{
+  "plugin": "ConsciousnessPlugin",
+  "plugin_ver": "0.1a",
+  "plugin_object": "__main__.py",
+  "plugin_permissions": "LEVEL2",
+  "accepts": [
+    {
+      "command": "!ping",
+      "callback": "ping_func@TestPlugin",
+      "on_event": "on_message"
+    }
+  ]
+}

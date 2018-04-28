@@ -26,7 +26,7 @@ class DiscordBot():
        self.plugin_manifest = json.load(open(f"{self.path}/plugin/manifest.json", "r"))
        self.manifests = []
        self.plugin_exports = []
-       self.callback = {"on_message" : []}
+       self.callback = {"on_message" : [], "on_reaction_add":[]}
        self._load_plugin_manifest()
 
     def _load_plugin_manifest(self):
@@ -43,10 +43,17 @@ class DiscordBot():
             spec.loader.exec_module(plugin)
             self.plugin_exports.append({"plugin": f"{temp['plugin']}", "class": getattr(plugin, temp['plugin'])})
 
+            # register events
             for callable_function in temp["accepts"]:
-                self.callback[callable_function['on_event']].append({
-                    "command": callable_function['command'],
-                    "callback": callable_function['callback']})
+                # on message event
+                if callable_function['on_event'] == "on_message":
+                    self.callback[callable_function['on_event']].append({
+                        "command": callable_function['command'],
+                        "callback": callable_function['callback']})
+                # on reaction add event
+                elif callable_function['on_event'] == "on_reaction_add":
+                    self.callback[callable_function['on_event']].append({
+                        "callback": callable_function['callback']})
 
             loaded_plugins.append(f"{temp['plugin']}@{temp['plugin_ver']}")
         return loaded_plugins
@@ -95,8 +102,16 @@ async def on_message(message):
                 await to_call["callback"](discord_bot, message, discord_client)
             else:
                 await to_call["callback"](message, discord_client)
+                
+@discord_client.event
+async def on_reaction_add(reaction, user):
+    __type__ = "on_reaction_add"
 
-
+    for i in callback[__type__]:
+        to_call = parse_callback(self.callback["on_reaction_add"])
+        if to_call != 5512:
+            await to_call(reaction, user)
+           
 async def skynet():
     while True:
         inpu = input()

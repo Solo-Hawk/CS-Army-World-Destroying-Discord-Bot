@@ -2,6 +2,7 @@
   "plugin": "TestPlugin",
   "plugin_ver": "0.1a",
   "plugin_object": "__main__.py",
+  "plugin_permissions": "LEVEL2",
   "accepts": [
     {
       "command": "!ping",

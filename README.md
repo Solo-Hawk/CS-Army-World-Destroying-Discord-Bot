@@ -1,6 +1,20 @@
 # CS-Army-World-Destroying-Discord-Bot
 CS Army Super Discord Bot - https://discord.gg/xmFX2E
 
+## Installing
+
+This bot uses Python 3.6.5! Make sure you have that installed.
+
+Also ensure you have discord installed via pip. This can be done by typing:
+
+```
+$ pip3 install discord
+```
+
+## plugins
+
+Wanna make a plugin? See /docs/plugins.md!
+
 ## ToDo List
 
 **Stage One - Basics**
@@ -10,18 +24,16 @@ CS Army Super Discord Bot - https://discord.gg/xmFX2E
 **Stage Two - Core**
  - [ ] Welcome page - Roles set by reactions
     - [ ] Programming Languages
-    - [ ] Timezones 
+    - [ ] Timezones
  - [ ] Starboard - High rated messages are posted to the board
  - [ ] Weather bot
 
 **Stage Three - Moderation**
  - [ ] Swear back bot
  - [ ] Kick / Report
- - [ ] Moderator Mail 
+ - [ ] Moderator Mail
 
 **Stage Four - Extensions**
  - [ ] Chat bot
  - [ ] Games and Random stuff
  - [ ] Ranking System
- 
- 

@@ -59,6 +59,8 @@ def setup(bot):
     bot.add_cog(Things(bot))
 ```
 
+If you want your plugin to be ramped to production immediately, then add it to the `addons` array in main.py. Otherwise, I'd wait till we script up a plugin manager, or talk to one of the lead devs. (The people with the "Bot Builders" role in Discord.)
+
 ---
 
 ## Scripting Commands

@@ -13,7 +13,7 @@ $ pip3 install discord
 
 ## plugins
 
-idk i'll make the docs later
+Wanna make a plugin? See /docs/plugins.md!
 
 ## ToDo List
 

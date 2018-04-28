@@ -1,3 +1,9 @@
+#
+# blah.py
+# a basic plugin for python bot i guess lmao
+# (c) 2018 Azure_Agst
+#
+
 import discord
 from discord.ext import commands
 from sys import argv
@@ -14,8 +20,6 @@ class Things:
     async def ping(self):
         """About the bot"""
         await self.bot.say("pong!")
-
-
 
 def setup(bot):
     bot.add_cog(Things(bot))

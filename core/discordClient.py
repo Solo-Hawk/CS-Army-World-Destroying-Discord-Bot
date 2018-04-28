@@ -50,7 +50,7 @@ async def on_ready(self):
     logger.debug(discord_client.user.id)
     logger.debug('------')
     for i in discord_bot._parse_plugin_manifests():
-        await discord.client.send_message(message.channel, f"{i} ... OK")
+        await discord.client.send_message(discord.Object(id='439598709299347456'), f"{i} ... OK")
 
 
 @discord_client.event

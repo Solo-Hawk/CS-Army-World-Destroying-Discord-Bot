@@ -96,3 +96,8 @@ async def on_message(message):
             else:
                 await to_call["callback"](message, discord_client)
 
+
+async def skynet():
+    while True:
+        inpu = input()
+        await discord_client.send_message(discord.Object(id="439534561836269577"), inpu)

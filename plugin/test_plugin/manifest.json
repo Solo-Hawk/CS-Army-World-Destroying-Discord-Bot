@@ -13,6 +13,12 @@
       "command": "!echo",
       "callback": "echo_func@TestPlugin",
       "on_event": "on_message"
+    },
+    {
+      "command": "!echo_to",
+      "callback": "echoto_func@TestPlugin",
+      "on_event": "on_message"
     }
+
   ]
 }

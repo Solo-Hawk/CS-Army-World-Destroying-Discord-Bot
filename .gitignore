@@ -8,3 +8,4 @@ __pycache__
 resources/token\.txt
 *.pyproj
 \.vs/
+*.sln

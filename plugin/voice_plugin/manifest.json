@@ -1,0 +1,28 @@
+{
+  "plugin": "VoicePlugin",
+  "plugin_ver": "0.1a",
+  "plugin_object": "__main__.py",
+  "plugin_permissions": "LEVEL2",
+  "accepts": [
+    {
+      "command": "!play",
+      "callback": "join@VoicePlugin",
+      "on_event": "on_message"
+    },
+    {
+      "command": "!stop",
+      "callback": "stop@VoicePlugin",
+      "on_event": "on_message"
+    },
+    {
+      "command": "!start",
+      "callback": "start@VoicePlugin",
+      "on_event": "on_message"
+    },
+    {
+      "command": "!vol",
+      "callback": "vol@VoicePlugin",
+      "on_event": "on_message"
+    }
+  ]
+}

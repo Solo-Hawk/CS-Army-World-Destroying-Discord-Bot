@@ -26,7 +26,7 @@ class DiscordBot():
        self.plugin_manifest = json.load(open(f"{self.path}/plugin/manifest.json", "r"))
        self.manifests = []
        self.plugin_exports = []
-       self.callback = {"on_message" : []}
+       self.callback = {"on_message" : [], "on_reaction_add": [], "on_ready": []}
        self._load_plugin_manifest()
 
     def _load_plugin_manifest(self):
@@ -41,13 +41,23 @@ class DiscordBot():
             spec = importlib.util.spec_from_file_location(temp['plugin'], f"{os.path.split(i)[0]}/{temp['plugin_object']}")
             plugin = importlib.util.module_from_spec(spec)
             spec.loader.exec_module(plugin)
-            self.plugin_exports.append({"plugin": f"{temp['plugin']}", "class": getattr(plugin, temp['plugin'])})
-
+            self.plugin_exports.append({"plugin": f"{temp['plugin']}", "class": getattr(plugin, temp['plugin'])()})
+            # register events
             for callable_function in temp["accepts"]:
-                self.callback[callable_function['on_event']].append({
-                    "command": callable_function['command'],
+                # on message event
+                if callable_function['on_event'] == "on_message":
+                    self.callback[callable_function['on_event']].append({
+                        "command": callable_function['command'],
+                        "callback": callable_function['callback']})
+                # on reaction add event
+                elif callable_function['on_event'] == "on_reaction_add":
+                    self.callback[callable_function['on_event']].append({ 
                     "callback": callable_function['callback']})
-
+                # on ready event
+                elif callable_function['on_event'] == "on_ready":
+                    self.callback[callable_function['on_event']].append({ 
+                    "callback": callable_function['callback']})
+        
             loaded_plugins.append(f"{temp['plugin']}@{temp['plugin_ver']}")
         return loaded_plugins
 
@@ -72,15 +82,26 @@ class DiscordBot():
 
 
 discord_bot = DiscordBot()
+voice = None
 
 @discord_client.event
 async def on_ready():
+    __type__ = "on_ready"
+    # init bot
     await discord_client.send_message(discord.Object(id=main_channel_id), f" Bot init ")
     logger.debug(discord_client.user.name)
     logger.debug(discord_client.user.id)
     logger.debug('------')
+    global voice
+    voice = await discord_client.join_voice_channel(discord.Object(id='438775726397980683'))
     for i in discord_bot._parse_plugin_manifests():
         await discord_client.send_message(discord.Object(id=main_channel_id), f"{i} ... OK")
+
+    # init plugins
+    for i in discord_bot.callback[__type__]:
+        to_call = discord_bot.parse_callback(i['callback'])
+        if to_call != 5512:
+            await to_call["callback"](discord_client)
 
 
 @discord_client.event
@@ -94,8 +115,16 @@ async def on_message(message):
             if to_call['permission'] == "LEVEL1":
                 await to_call["callback"](discord_bot, message, discord_client)
             else:
-                await to_call["callback"](message, discord_client)
+                await to_call["callback"](voice, message, discord_client)
 
+@discord_client.event
+async def on_reaction_add(reaction, user):
+    __type__ = "on_reaction_add"
+
+    for i in discord_bot.callback[__type__]:
+        to_call = discord_bot.parse_callback(i['callback'])
+        if to_call != 5512:
+            await to_call["callback"](reaction, user, discord_client)
 
 async def skynet():
     while True:

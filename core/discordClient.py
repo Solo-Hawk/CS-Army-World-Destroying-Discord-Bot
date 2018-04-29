@@ -26,7 +26,7 @@ class DiscordBot():
        self.plugin_manifest = json.load(open(f"{self.path}/plugin/manifest.json", "r"))
        self.manifests = []
        self.plugin_exports = []
-       self.callback = {"on_message" : []}
+       self.callback = {"on_message" : [], "on_reaction_add": [], "on_ready": []}
        self._load_plugin_manifest()
 
     def _load_plugin_manifest(self):
@@ -52,6 +52,10 @@ class DiscordBot():
                         "callback": callable_function['callback']})
                 # on reaction add event
                 elif callable_function['on_event'] == "on_reaction_add":
+                    self.callback[callable_function['on_event']].append({ 
+                    "callback": callable_function['callback']})
+                # on ready event
+                elif callable_function['on_event'] == "on_ready":
                     self.callback[callable_function['on_event']].append({ 
                     "callback": callable_function['callback']})
         
@@ -82,12 +86,20 @@ discord_bot = DiscordBot()
 
 @discord_client.event
 async def on_ready():
+    __type__ = "on_ready"
+    # init bot
     await discord_client.send_message(discord.Object(id=main_channel_id), f" Bot init ")
     logger.debug(discord_client.user.name)
     logger.debug(discord_client.user.id)
     logger.debug('------')
     for i in discord_bot._parse_plugin_manifests():
         await discord_client.send_message(discord.Object(id=main_channel_id), f"{i} ... OK")
+
+    # init plugins
+    for i in callback[__type__]:
+        to_call = parse_callback(self.callback[__type__])
+        if to_call != 5512:
+            await to_call(discord_client)
 
 
 @discord_client.event
@@ -108,9 +120,9 @@ async def on_reaction_add(reaction, user):
     __type__ = "on_reaction_add"
 
     for i in callback[__type__]:
-        to_call = parse_callback(self.callback["on_reaction_add"])
+        to_call = parse_callback(self.callback[__type__])
         if to_call != 5512:
-            await to_call(reaction, user)
+            await to_call(reaction, user, discord_client)
 
 async def skynet():
     while True:

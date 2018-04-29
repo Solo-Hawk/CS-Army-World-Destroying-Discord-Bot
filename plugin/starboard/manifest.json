@@ -1,0 +1,29 @@
+{
+  "plugin": "StarboardPlugin",
+  "plugin_ver": "0.1a",
+  "plugin_object": "__main__.py",
+  "plugin_permissions": "LEVEL2",
+  "accepts": [
+    {
+      "command": "!setStarboard",
+      "callback": "setStarboard@StarboardPlugin",
+      "on_event": "on_message"
+    },
+	{
+      "callback": "on_reaction_add@StarboardPlugin",
+      "on_event": "on_reaction_add"
+    }
+	{
+      "callback": "loadConfigs@StarboardPlugin",
+      "on_event": "on_ready"
+    }
+  ],
+  "configs": [
+	{
+		"min_stars": 10
+	},
+	{
+		"accepted_emojis": ["star", "star2"]
+	}
+  ]
+}

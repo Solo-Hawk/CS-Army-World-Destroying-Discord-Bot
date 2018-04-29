@@ -17,7 +17,7 @@ class StarboardPlugin:
             self.configs["accepted_emojis"] = i["accepted_emojis"]
 
     async def setStarboard(message, discord_client: object) -> str:
-        starboard_channel_id = message.channel
+        starboard_channel_id = message.channel.id
 
     async def on_reaction_add(reaction, user, discord_client: object):
         if reaction.emoji.name in configs["accepted_emojis"]:

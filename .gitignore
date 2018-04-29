@@ -9,3 +9,4 @@ resources/token\.txt
 *.pyproj
 \.vs/
 *.sln
+.localhistory/

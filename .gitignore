@@ -7,4 +7,6 @@ __pycache__
 
 resources/token\.txt
 *.pyproj
-.vs/CS-Army-World-Destroying-Discord-Bot/v15/.suo
+\.vs/
+*.sln
+.localhistory/

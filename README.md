@@ -11,7 +11,7 @@ CS Army Super Discord Bot - https://discord.gg/xmFX2E
  - [ ] Welcome page - Roles set by reactions
     - [ ] Programming Languages
     - [ ] Timezones 
- - [ ] Starboard - High rated messages are posted to the board
+ - [x] Starboard - High rated messages are posted to the board
  - [ ] Weather bot
 
 **Stage Three - Moderation**

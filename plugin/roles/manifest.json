@@ -16,7 +16,7 @@
 	{
       "command": "!setReaction",
       "callback": "setReaction@RolesPlugin",
-      "on_event": "on_message"
+      "on_event": "on_message",
     }
   ]
 }

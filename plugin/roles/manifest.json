@@ -7,11 +7,11 @@
     {
       "command": "!setSelfRole",
       "callback": "setSelfRole@RolesPlugin",
-      "on_event": "on_message"
+      "on_event": "on_message",
     },
 	{
       "callback": "on_reaction_add@RolesPlugin",
-      "on_event": "on_reaction_add"
+      "on_event": "on_reaction_add",
     },
 	{
       "command": "!setReaction",

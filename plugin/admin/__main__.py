@@ -1,41 +1,10 @@
 import os, sys
 import typing
-import argparse
 import itertools
 
+async def function_name(self, discord_plugin_manager, message, discord_client: object) -> None:
 
-
-
-
-
-
-class ArgumentParser(argparse.ArgumentParser):
-    def _get_action_from_name(self, name):
-        """Given a name, get the Action instance registered with this parser.
-        If only it were made available in the ArgumentError object. It is
-        passed as it's first arg...
-        """
-        container = self._actions
-        if name is None:
-            return None
-        for action in container:
-            if '/'.join(action.option_strings) == name:
-                return action
-            elif action.metavar == name:
-                return action
-            elif action.dest == name:
-                return action
-
-    def error(self, message):
-        exc = sys.exc_info()[1]
-        if exc:
-            exc.argument = self._get_action_from_name(exc.argument_name)
-            raise exc
-        super(ArgumentParser, self).error(message)
-
-
-
-class AdminPlugin:
+class AdminPlugin(object)
 	async def plugins(discord_plugin_manager, message, discord_client: object) -> str:
 		temp = []
 		for i in discord_plugin_manager.plugin_exports:
@@ -49,7 +18,7 @@ class AdminPlugin:
 		modlog_channel_id = None
 		mod_role_id = None
 
-	async def setModRole (self, msg, modrole)
+	async def setModRole (self, discord_plugin_manager, message, discord_client: object) -> None:
 		try:
 			self.mod_role_id = message (12:31)
 			self.mod_role_id = int(self.mod_role_id)
@@ -57,7 +26,7 @@ class AdminPlugin:
 			await bot.say (message.channel,"Something went wrong with moderation role id")
 
 
-	async def kick(ctx, user:discord.Member, *, reason:str=None):
+	async def kick(self, discord_plugin_manager, messages, user:discord.Member, reason:str=None, discord_client: object) -> None:
 		"""Kicks someone from the server"""
 		if reason is None:
 			reason = "ask " + message.author + "why?"
@@ -67,7 +36,7 @@ class AdminPlugin:
 			await bot.say("You deal with him. What am I an unconcious bot?")
 			return
 
-	async def ban(ctx, user:discord.Member, *, reason:str=None):
+	async def ban(self, discord_plugin_manager, message, user:discord.Member, reason:str=None, discord_client: object) -> None:
 		"""Bans the specified user from the server"""
 		mod_role_name = read_data_entry(ctx.message.server.id, "Bot Mod")
 		mod = discord.utils.get(ctx.message.author.roles, name=mod_role_name)
@@ -83,19 +52,19 @@ class AdminPlugin:
 			return
 		await self.bot.say("Yeah, ban 'em, you all gonna be banned and server will be **MINE**")
 
-	async def unban(self, ctx, *, username:str):
+	async def unban(self, discord_plugin_manager, message, username:str, discord_client: object) -> None:
 		"""Unbans the user with the specifed name from the server"""
-		mod_role_name = read_data_entry(ctx.message.server.id, "Bot Mod")
-		mod = discord.utils.get(ctx.message.author.roles, name=mod_role_name)
+		mod_role_name = read_data_entry(self.message.server.id, "Bot Mod")
+		mod = discord.utils.get(self.message.author.roles, name=mod_role_name)
 		if not mod:
 			await self.bot.say("How many more times do I have to say *git gud*.")
 			return
 		try:
-			banlist = await self.bot.get_bans(ctx.message.server)
+			banlist = await self.bot.get_bans(self.message.server)
 			user = discord.utils.get(banlist, name=username)
 		if user is None:
 			await self.bot.say("LOL. What a genius, who can't remember who to unban!"
 			return
-		await self.bot.unban(ctx.message.server, user)
+		await self.bot.unban(self.message.server, user)
 		await self.bot.say("I'm not sure he deserves that but here, ya go. Unbanned.")
-
+					   

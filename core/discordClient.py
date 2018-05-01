@@ -57,7 +57,6 @@ class DiscordBot():
                 elif callable_function['on_event'] == "on_ready":
                     self.callback[callable_function['on_event']].append({ 
                     "callback": callable_function['callback']})
-        
             loaded_plugins.append(f"{temp['plugin']}@{temp['plugin_ver']}")
         return loaded_plugins
 

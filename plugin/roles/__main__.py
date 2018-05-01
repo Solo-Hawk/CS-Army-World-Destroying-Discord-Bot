@@ -19,10 +19,10 @@ class RolesPlugin(object):
 		"""!setReaction 1 439568811822284801 :thanksjustin:"""
 		try:
 			self.rolenumber = message (13)
-			self.rolenumber = int(rolenumber)
-			self.SelfRole_ids  [rolenumber] = message (14:33)
-			self.SelfRole_ids = int(SelfRole_ids [rolenumber])
-			self.SelfRole_reaction [rolenumber] = message (35:end)
+			self.rolenumber = int(self.rolenumber)
+			self.SelfRole_ids  [self.rolenumber] = message (14:33)
+			self.SelfRole_ids = int(self.SelfRole_ids [rolenumber])
+			self.SelfRole_reaction [self.rolenumber] = message (35:end)
 		except ValueError:
 			await bot.say (message.channel,"Learn to use syntax, that's why i'll destroy world. (Syntax is !setReaction 'integer' 'roleid' 'reaction'")
 

@@ -2,21 +2,11 @@
   "plugin": "RolesPlugin",
   "plugin_ver": "0.1a",
   "plugin_object": "__main__.py",
-  "plugin_permissions": "LEVEL2",
+  "plugin_permissions": "LEVEL1",
   "accepts": [
-    {
-      "command": "!setSelfRole",
-      "callback": "setSelfRole@RolesPlugin",
-      "on_event": "on_message"
-    },
 	{
       "callback": "on_reaction_add@RolesPlugin",
       "on_event": "on_reaction_add"
-    },
-	{
-      "command": "!setReaction",
-      "callback": "setReaction@RolesPlugin",
-      "on_event": "on_message"
     }
   ]
 }

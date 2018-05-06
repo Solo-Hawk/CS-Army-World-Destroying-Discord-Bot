@@ -2,7 +2,7 @@
   "plugin": "RolesPlugin",
   "plugin_ver": "0.1a",
   "plugin_object": "__main__.py",
-  "plugin_permissions": "LEVEL1",
+  "plugin_permissions": "LEVEL4",
   "accepts": [
 	{
       "callback": "on_reaction_add@RolesPlugin",

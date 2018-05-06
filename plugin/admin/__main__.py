@@ -18,14 +18,6 @@ class AdminPlugin(object)
 		modlog_channel_id = None
 		mod_role_id = None
 
-	async def setModRole (self, discord_plugin_manager, message, discord_client: object) -> None:
-		try:
-			self.mod_role_id = message (12:31)
-			self.mod_role_id = int(self.mod_role_id)
-		except ValueError:
-			await bot.say (message.channel,"Something went wrong with moderation role id")
-
-
 	async def kick(self, discord_plugin_manager, messages, user:discord.Member, reason:str=None, discord_client: object) -> None:
 		"""Kicks someone from the server"""
 		if reason is None:

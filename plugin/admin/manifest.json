@@ -35,5 +35,5 @@
       "on_event": "on_message"
     }
   ],
-  "plugin_permissions": "LEVEL2"
+  "plugin_permissions": "LEVEL4"
 }

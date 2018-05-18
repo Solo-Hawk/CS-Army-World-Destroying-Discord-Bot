@@ -8,7 +8,32 @@
       "command": "!plugins",
       "callback": "plugins@AdminPlugin",
       "on_event": "on_message"
+    },
+    {
+      "command": "!kick",
+      "callback": "kick@AdminPlugin",
+      "on_event": "on_message"
+    },
+    {
+      "command": "!ban",
+      "callback": "plugins@AdminPlugin",
+      "on_event": "on_message"
+    },
+    {
+      "command": "!unban",
+      "callback": "plugins@AdminPlugin",
+      "on_event": "on_message"
+    },
+    {
+      "command": "!warn",
+      "callback": "plugins@AdminPlugin",
+      "on_event": "on_message"
+    },
+    {
+      "command": "!tempban",
+      "callback": "plugins@AdminPlugin",
+      "on_event": "on_message"
     }
   ],
-  "plugin_permissions": "LEVEL1"
+  "plugin_permissions": "LEVEL4"
 }
